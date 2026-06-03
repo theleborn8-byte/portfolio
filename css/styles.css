@@ -1,0 +1,171 @@
+/* --- Variables globales --- */
+:root {
+    --couleur-fond: #121212;
+    --couleur-texte: #e0e0e0;
+    --couleur-primaire: #d32f2f; /* Un rouge sombre stylé */
+    --couleur-secondaire: #1e1e1e;
+    --couleur-bordure: #333;
+}
+
+/* --- Base --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--couleur-fond);
+    color: var(--couleur-texte);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #ffffff;
+    margin-top: 0;
+}
+
+/* --- Navigation --- */
+header {
+    background-color: var(--couleur-secondaire);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid var(--couleur-bordure);
+    z-index: 100;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--couleur-primaire);
+}
+
+/* --- Structure Principale --- */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    padding-top: 5rem; /* Compense le menu fixe au scroll */
+    margin-bottom: 5rem;
+}
+
+.section-accueil {
+    text-align: center;
+    padding: 8rem 0;
+}
+
+.section-accueil h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    border-bottom: 2px solid var(--couleur-primaire);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+/* --- Grille des Projets --- */
+.grille-projets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.projet-carte {
+    background-color: var(--couleur-secondaire);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--couleur-bordure);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.projet-carte:hover {
+    transform: translateY(-5px);
+    border-color: var(--couleur-primaire);
+}
+
+.image-projet {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+/* Badges technos */
+.technos {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 10px;
+}
+
+.badge {
+    background-color: #333;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* --- Section Contact --- */
+.contact-box {
+    background-color: var(--couleur-secondaire);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.bouton-contact, .bouton-github {
+    display: inline-block;
+    margin: 1rem 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.bouton-contact {
+    background-color: var(--couleur-primaire);
+    color: #fff;
+}
+
+.bouton-contact:hover {
+    background-color: #b71c1c;
+}
+
+.bouton-github {
+    background-color: #333;
+    color: #fff;
+}
+
+.bouton-github:hover {
+    background-color: #555;
+}
+
+/* --- Pied de page --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--couleur-secondaire);
+    font-size: 0.9rem;
+    color: #888;
+    border-top: 1px solid var(--couleur-bordure);
+}
