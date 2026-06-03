@@ -3,63 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Développeur Web</title>
+    <title>Portfolio | Projets</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
+    <header class="navbar">
+        <div class="logo">Mon Portfolio</div>
         <nav>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#projets">Mes Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="index.html" class="active">Mes Projets</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <main>
-        <section id="accueil" class="section-accueil">
-            <h1>Bonjour, je suis Développeur</h1>
-            <p>Bienvenue sur mon portfolio. Voici un aperçu de mon travail en intégration web et développement.</p>
+    <main class="container">
+        <section class="intro">
+            <h1>Développeur & Intégrateur Web</h1>
+            <p>Découvrez mes réalisations techniques et conceptuelles.</p>
         </section>
 
-        <section id="projets">
-            <h2>Mes Exploits</h2>
-            <div class="grille-projets">
-                
-                <div class="projet-carte">
-                    <h3>Site Thème "Dark Vador"</h3>
-                    <p>Conception et intégration complète d'un site web personnalisé sur le thème de Dark Vador. Un travail axé sur la structure HTML et le design CSS pour un rendu visuel impactant.</p>
-                    <div class="technos">
-                        <span class="badge">HTML</span>
-                        <span class="badge">CSS</span>
+        <section class="grid-projets">
+            <!-- Projet 1 -->
+            <article class="card">
+                <div class="card-content">
+                    <h2>Site Thème "Dark Vador"</h2>
+                    <p>Création d'une interface web immersive sur le thème de Dark Vador. Focus sur l'intégration stricte et la structuration visuelle avancée.</p>
+                    <div class="tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
                     </div>
                 </div>
+            </article>
 
-                <div class="projet-carte">
-                    <h3>Outil de Gestion Économique</h3>
-                    <p>Développement d'une plateforme web permettant de gérer l'économie globale d'un serveur roleplay, incluant le traitement des données et la logique métier.</p>
-                    <div class="technos">
-                        <span class="badge">Python</span>
-                        <span class="badge">SQLite</span>
+            <!-- Projet 2 -->
+            <article class="card">
+                <div class="card-content">
+                    <h2>Outil de Gestion Économique</h2>
+                    <p>Développement d'une application web pour la gestion des flux économiques et l'administration de données complexes.</p>
+                    <div class="tags">
+                        <span>Python</span>
+                        <span>SQLite</span>
                     </div>
                 </div>
-
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Me Contacter</h2>
-            <div class="contact-box">
-                <p>Intéressé par mon profil ou besoin d'un développeur pour un projet ? N'hésitez pas à me contacter.</p>
-                <a href="mailto:ton-adresse@email.com" class="bouton-contact">M'envoyer un e-mail</a>
-                <a href="https://github.com/ton-pseudo" target="_blank" class="bouton-github">Mon profil GitHub</a>
-            </div>
+            </article>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 - Portfolio créé de A à Z en HTML/CSS</p>
+        <p>&copy; 2026 - Développé avec rigueur et passion.</p>
     </footer>
 </body>
 </html>
