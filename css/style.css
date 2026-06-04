@@ -307,9 +307,10 @@ body {
 
 /* ==========================================================================
    VERSION MOBILE SÉPARÉE // ULTRA DESIGN & 100% CENTRÉE ACCENTUÉ
+   (Bascule à 950px pour laisser passer la simulation Desktop de 980px sur Mobile)
    ========================================================================== */
 
-@media (max-width: 1024px) {
+@media (max-width: 950px) {
     /* Suppression complète des lignes de structure PC pour libérer l'espace mobile */
     .structural-grid-line { display: none !important; } 
 
@@ -386,7 +387,7 @@ body {
         font-size: 2.3rem; 
         line-height: 1.1;
         text-align: center;
-        transform-origin: center center; /* Zoom équilibré par le milieu */
+        transform-origin: center center; 
     }
     .showcase-row:hover {
         padding-left: 1.5rem; 
