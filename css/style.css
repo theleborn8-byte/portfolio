@@ -181,7 +181,7 @@ body {
 }
 
 /* ==========================================================================
-   LE FEED D'ACCUEIL (AVEC LE MOUVEMENT DE PADDING RESTAURÉ)
+   LE FEED D'ACCUEIL
    ========================================================================== */
 
 .editorial-feed { display: flex; flex-direction: column; margin-bottom: 10rem; }
@@ -193,7 +193,7 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 4rem; 
-    padding: 5rem 3rem; /* On remet l'espace intérieur qui place joliment les textes */
+    padding: 5rem 3rem; 
     border-bottom: 1px solid var(--fine-line);
     text-decoration: none;
     color: var(--text-pure);
@@ -215,7 +215,7 @@ body {
 }
 
 .showcase-row:hover {
-    padding-left: 4.5rem; /* Le texte est poussé vers l'intérieur au survol */
+    padding-left: 4.5rem; 
     padding-right: 4.5rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
@@ -306,29 +306,60 @@ body {
 .footer-content { display: flex; justify-content: space-between; font-size: 0.75rem; letter-spacing: 3px; color: var(--gold-raw); font-weight: 600; }
 
 /* ==========================================================================
-   RESPONSIVE (TÉLÉPHONES ET TABLETTES)
+   RESPONSIVE MOBILE (L'ÉCHELLE PARFAITE BASÉE SUR LE PC)
    ========================================================================== */
 
 @media (max-width: 1024px) {
-    .line-left, .line-right { display: none; } 
-    .navbar { padding: 2rem 5vw; flex-direction: column; gap: 1.5rem; }
-    .nav-links { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
-    .theme-btn { margin-left: 0; }
-    .hero-editorial { padding-left: 5vw; padding-right: 5vw; text-align: center; margin-bottom: 5rem; margin-top: 4rem;}
-    .hero-editorial h1 { font-size: 4rem; }
+    /* On restaure les lignes architecturales, mais à 5vw des bords */
+    .line-left { left: 5vw; display: block; } 
+    .line-right { right: 5vw; display: block; } 
+
+    /* Navbar : Le bouton mode passe proprement en dessous ou s'intègre au menu */
+    .navbar { padding: 2rem calc(5vw + 1rem); flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .nav-links { flex-wrap: wrap; justify-content: flex-start; gap: 1.5rem; width: 100%; }
+    .theme-btn { margin-left: auto; } /* Pousse le bouton à droite */
     
-    .showcase-row { width: 90vw; margin-left: 5vw; flex-direction: column; align-items: flex-start; gap: 2rem; padding: 3.5rem 2rem; }
-    .showcase-row:hover { padding-left: 2rem; padding-right: 2rem; }
+    /* Le Hero retrouve son alignement PC à gauche */
+    .hero-editorial { 
+        padding-left: calc(5vw + 1.5rem); 
+        padding-right: 5vw; 
+        text-align: left; 
+        margin-bottom: 5rem; 
+        margin-top: 4rem;
+    }
+    .hero-editorial h1 { font-size: 3.8rem; }
+    
+    /* Les Projets gardent le padding fluide du PC */
+    .showcase-row { 
+        width: 90vw; 
+        margin-left: 5vw; 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 2rem; 
+        padding: 3.5rem 1.5rem; 
+    }
+    /* Restauration du mouvement PC : glisse à l'intérieur */
+    .showcase-row:hover { padding-left: 2.5rem; padding-right: 2.5rem; }
     .row-right { max-width: 100%; gap: 2rem; justify-content: space-between; width: 100%; }
     
     .contact-section { width: 90vw; margin-left: 5vw; }
     .contact-form { padding: 4rem 1.5rem; }
     
-    .layout-minecraft, .layout-trading, .layout-killer, .layout-tva, .layout-boutique, .layout-fivem { width: 90vw; margin-left: 5vw; }
-    .retour-minecraft, .retour-trading, .retour-killer, .retour-tva, .retour-boutique, .retour-fivem { margin-left: 5vw; }
+    .layout-minecraft, .layout-trading, .layout-killer, .layout-tva, .layout-boutique, .layout-fivem { 
+        width: 90vw; 
+        margin-left: 5vw; 
+        padding: 2rem 1.5rem 8rem 1.5rem; 
+    }
+    .retour-minecraft, .retour-trading, .retour-killer, .retour-tva, .retour-boutique, .retour-fivem { 
+        margin-left: calc(5vw + 1.5rem); 
+    }
     
-    .title-minecraft, .title-trading, .title-killer, .title-tva, .title-boutique, .title-fivem, .title-contact { font-size: 3rem; text-align: center; }
+    .title-minecraft, .title-trading, .title-killer, .title-tva, .title-boutique, .title-fivem, .title-contact { 
+        font-size: 3.2rem; 
+        text-align: left; /* Alignement PC restauré */
+    }
     
-    .editorial-footer { padding: 0 5vw 2rem 5vw; }
-    .footer-content { flex-direction: column; gap: 1rem; text-align: center; }
+    /* Le footer s'aligne proprement dans la grille */
+    .editorial-footer { padding: 0 calc(5vw + 1.5rem) 2rem calc(5vw + 1.5rem); }
+    .footer-content { flex-direction: column; gap: 1rem; text-align: left; }
 }
