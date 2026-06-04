@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Syne:wght@700;800&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode');
+        }
+    </script>
 </head>
 <body>
 
@@ -17,10 +23,11 @@
 
     <header class="navbar">
         <div class="logo">Thelwen</div>
-        <nav>
+        <div class="nav-links">
             <a href="index.html" class="active"><span class="nav-num"></span> Projets</a>
             <a href="contact.html"><span class="nav-num"></span> Contact</a>
-        </nav>
+            <button id="theme-toggle" class="theme-btn">MODE: <span id="theme-label">DARK</span></button>
+        </div>
     </header>
 
     <main class="viewport-canvas">
@@ -49,5 +56,26 @@
             <span>TOUT DROIT RÉSERVÉ ©</span>
         </div>
     </footer>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeLabel = document.getElementById('theme-label');
+        const html = document.documentElement;
+
+        if (html.classList.contains('light-mode')) {
+            themeLabel.textContent = 'LIGHT';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            html.classList.toggle('light-mode');
+            if (html.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+                themeLabel.textContent = 'LIGHT';
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeLabel.textContent = 'DARK';
+            }
+        });
+    </script>
 </body>
 </html>
