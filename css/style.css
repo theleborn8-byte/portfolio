@@ -307,25 +307,22 @@ body {
 
 /* ==========================================================================
    VERSION MOBILE SÉPARÉE // ULTRA DESIGN & 100% CENTRÉE ACCENTUÉ
-   (Bascule à 950px pour laisser passer la simulation Desktop de 980px sur Mobile)
+   (Bascule à 950px pour isoler le vrai rendu mobile)
    ========================================================================== */
 
 @media (max-width: 950px) {
-    /* Suppression complète des lignes de structure PC pour libérer l'espace mobile */
+    /* Cache les lignes architecturales du PC */
     .structural-grid-line { display: none !important; } 
 
-    /* Navbar Mobile totalement centrée avec de l'air */
+    /* Centrage parfait de la Navbar */
     .navbar { 
-        padding: 3rem 1.5rem; 
+        padding: 2rem 5vw; 
         flex-direction: column; 
         justify-content: center;
         align-items: center; 
-        gap: 2rem; 
+        gap: 1.5rem; 
     }
-    .navbar .logo {
-        font-size: 1.6rem;
-        text-align: center;
-    }
+    .navbar .logo { font-size: 1.6rem; text-align: center; }
     .nav-links { 
         flex-direction: column;
         justify-content: center; 
@@ -334,170 +331,107 @@ body {
         width: 100%; 
     }
     .theme-btn { 
-        margin-left: 0; 
-        margin-top: 0.5rem;
+        margin: 0; 
         padding: 0.6rem 2rem;
         font-size: 0.75rem;
     }
     
-    /* Hero Section Mobile : Impact visuel massif et centré */
+    /* Hero Section : Le texte s'adapte à l'écran sans déborder */
     .hero-editorial { 
-        padding: 0 2rem; 
+        width: 100%;
+        padding: 0 5vw; 
         text-align: center; 
         margin-top: 3rem;
-        margin-bottom: 6rem; 
+        margin-bottom: 5rem; 
+        box-sizing: border-box;
     }
-    .hero-meta {
-        font-size: 0.8rem;
-        letter-spacing: 6px;
-        margin-bottom: 1rem;
-    }
+    .hero-meta { font-size: 0.8rem; letter-spacing: 4px; margin-bottom: 1rem; }
     .hero-editorial h1 { 
-        font-size: 3.5rem; 
+        font-size: clamp(2.2rem, 11vw, 4rem); /* Magie ! Le texte grandit et rétrécit avec l'écran */
         line-height: 1;
         letter-spacing: -1px;
+        word-wrap: break-word; /* Force le passage à la ligne si c'est toujours trop grand */
     }
-    .hero-sub {
-        font-size: 0.9rem;
-        letter-spacing: 3px;
-        margin-top: 1.5rem;
-    }
+    .hero-sub { font-size: 0.85rem; letter-spacing: 2px; margin-top: 1.5rem; }
     
-    /* Feed de projets Mobile : Bloc centré épuré type Galerie d'art */
-    .editorial-feed { gap: 2rem; }
+    /* Feed de projets : Centrage géométrique parfait */
+    .editorial-feed { width: 100%; align-items: center; gap: 2rem; overflow-x: hidden; }
     .showcase-row { 
-        width: 88vw; 
-        margin-left: 6vw; 
+        width: 90%; 
+        margin: 0 auto; /* C'est cette ligne qui fait le centrage parfait */
         flex-direction: column; 
         align-items: center; 
         text-align: center;
         gap: 1.5rem; 
-        padding: 4rem 1.5rem; 
+        padding: 3rem 1rem; 
+        box-sizing: border-box;
     }
-    .row-left {
-        align-items: center;
-        text-align: center;
-        width: 100%;
-    }
-    .row-index {
-        font-size: 0.95rem;
-        letter-spacing: 2px;
-    }
+    .row-left { align-items: center; text-align: center; width: 100%; }
+    .row-index { font-size: 0.9rem; letter-spacing: 2px; }
     .showcase-row h2 { 
-        font-size: 2.3rem; 
+        font-size: clamp(1.8rem, 9vw, 2.5rem); /* Les mots longs comme DÉVELOPPEMENT vont rétrécir au lieu de déborder */
         line-height: 1.1;
         text-align: center;
         transform-origin: center center; 
+        word-wrap: break-word;
     }
     .showcase-row:hover {
-        padding-left: 1.5rem; 
-        padding-right: 1.5rem;
+        padding-left: 1rem; 
+        padding-right: 1rem;
         background: linear-gradient(180deg, var(--hover-bg) 0%, transparent 100%);
     }
     
-    .row-right { 
-        max-width: 100%; 
-        flex-direction: column;
-        align-items: center; 
-        text-align: center;
-        gap: 1.5rem; 
-        width: 100%; 
-    }
-    .project-brief {
-        font-size: 0.95rem;
-        text-align: center;
-        line-height: 1.5;
-    }
-    .project-cross {
-        font-size: 1.8rem;
-        margin-top: 0.5rem;
-    }
+    .row-right { max-width: 100%; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; width: 100%; }
+    .project-brief { font-size: 0.95rem; text-align: center; line-height: 1.5; padding: 0 10px; }
+    .project-cross { font-size: 1.8rem; margin-top: 0.5rem; }
 
-    /* Annulation des translations asymétriques du PC */
+    /* On retire les mouvements PC sur mobile */
     .showcase-row:hover .row-left { transform: translateX(0); }
     .showcase-row:hover .row-right { transform: translateX(0); }
     
-    /* Pages de détails (Minecraft, FiveM, etc.) Mobile 100% Centrées */
+    /* Pages annexes totalement centrées */
     .layout-minecraft, .layout-trading, .layout-killer, .layout-tva, .layout-boutique, .layout-fivem { 
-        width: 88vw; 
-        margin-left: 6vw; 
-        padding: 2rem 1rem 6rem 1rem; 
+        width: 90%; 
+        margin: 0 auto; 
+        padding: 2rem 5vw 6rem 5vw; 
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
+        box-sizing: border-box;
     }
     .retour-minecraft, .retour-trading, .retour-killer, .retour-tva, .retour-boutique, .retour-fivem { 
-        margin-left: 0;
+        margin: 0 0 3rem 0;
         text-align: center;
         width: 100%;
-        margin-bottom: 3rem;
+        display: block;
     }
     .title-minecraft, .title-trading, .title-killer, .title-tva, .title-boutique, .title-fivem, .title-contact { 
-        font-size: 2.8rem; 
+        font-size: clamp(2rem, 10vw, 3rem); 
         text-align: center; 
         line-height: 1;
         width: 100%;
+        word-wrap: break-word;
     }
     .paragraph-minecraft, .paragraph-trading, .paragraph-killer, .paragraph-tva, .paragraph-boutique, .paragraph-fivem {
-        font-size: 1.05rem;
+        font-size: 1rem;
         text-align: center;
         line-height: 1.6;
     }
     
-    /* Blocs spécifications en colonne et centrés */
-    [class^="specs-block-"] {
-        width: 100%;
-        text-align: center;
-        margin-top: 3.5rem;
-    }
-    [class^="specs-title-"] {
-        text-align: center;
-        font-size: 0.85rem;
-    }
-    [class^="specs-details-"] {
-        text-align: center;
-        font-size: 0.9rem;
-    }
+    [class^="specs-block-"] { width: 100%; text-align: center; margin-top: 3.5rem; }
+    [class^="specs-title-"] { text-align: center; font-size: 0.85rem; }
+    [class^="specs-details-"] { text-align: center; font-size: 0.9rem; }
     
-    /* Formulaire de Contact Mobile Centré */
-    .contact-section { 
-        width: 88vw; 
-        margin-left: 6vw; 
-    }
-    .contact-form { 
-        padding: 4rem 1.5rem; 
-        width: 100%;
-    }
-    .form-group input, .form-group textarea {
-        font-size: 1.15rem;
-        width: 100%;
-    }
-    .btn-primary {
-        padding: 1.2rem 2.5rem !important;
-        font-size: 0.9rem;
-        width: 100%;
-        max-width: 550px;
-    }
+    /* Formulaire */
+    .contact-section { width: 90%; margin: 0 auto; }
+    .contact-form { padding: 3rem 5vw; width: 100%; box-sizing: border-box; }
+    .form-group input, .form-group textarea { font-size: 1.1rem; width: 100%; }
+    .btn-primary { padding: 1.2rem 1.5rem !important; font-size: 0.85rem; width: 100%; max-width: 100%; white-space: normal; }
     
-    /* Liens applications FiveM / Killer élargis sur mobile */
-    .link-killer, .link-fivem {
-        width: 100%;
-        max-width: 550px;
-        text-align: center;
-        padding: 1.2rem 1.5rem;
-    }
+    .link-killer, .link-fivem { width: 100%; max-width: 100%; text-align: center; padding: 1.2rem 1rem; box-sizing: border-box; }
 
-    /* Footer Mobile Épuré et Centré */
-    .editorial-footer { 
-        padding: 4rem 2rem 3rem 2rem; 
-        text-align: center;
-    }
-    .footer-content { 
-        flex-direction: column; 
-        align-items: center;
-        justify-content: center;
-        gap: 1rem; 
-        text-align: center; 
-    }
+    /* Footer */
+    .editorial-footer { padding: 3rem 5vw; text-align: center; }
+    .footer-content { flex-direction: column; align-items: center; justify-content: center; gap: 1rem; text-align: center; }
 }
