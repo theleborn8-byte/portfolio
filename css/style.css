@@ -79,7 +79,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3rem 4rem;
+    padding: 3rem calc(15vw + 2rem); 
     position: relative;
     z-index: 10;
 }
@@ -136,8 +136,14 @@ body {
    HERO D'ACCUEIL MONUMENTAL
    ========================================================================== */
 
-.viewport-canvas { position: relative; z-index: 2; padding: 0 4rem; }
-.hero-editorial { margin-top: 6rem; margin-bottom: 8rem; padding-left: calc(15vw - 4rem + 2rem); }
+.viewport-canvas { position: relative; z-index: 2; padding: 0; }
+
+.hero-editorial { 
+    margin-top: 6rem; 
+    margin-bottom: 8rem; 
+    padding-left: calc(15vw + 3rem); 
+    padding-right: 15vw; 
+}
 
 .hero-meta { 
     font-family: 'Cinzel', serif; 
@@ -175,19 +181,19 @@ body {
 }
 
 /* ==========================================================================
-   LE FEED D'ACCUEIL VIVANT 
+   LE FEED D'ACCUEIL (AVEC LE MOUVEMENT DE PADDING RESTAURÉ)
    ========================================================================== */
 
 .editorial-feed { display: flex; flex-direction: column; margin-bottom: 10rem; }
 
 .showcase-row {
-    width: 70vw; /* Élargi pour donner plus d'espace au contenu */
-    align-self: center;
+    width: 70vw; 
+    margin-left: 15vw; 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 4rem; /* Sécurité absolue : 4rem d'espace minimum entre le titre et le texte */
-    padding: 5rem 3rem;
+    gap: 4rem; 
+    padding: 5rem 3rem; /* On remet l'espace intérieur qui place joliment les textes */
     border-bottom: 1px solid var(--fine-line);
     text-decoration: none;
     color: var(--text-pure);
@@ -209,13 +215,16 @@ body {
 }
 
 .showcase-row:hover {
-    padding-left: 4.5rem; padding-right: 4.5rem;
+    padding-left: 4.5rem; /* Le texte est poussé vers l'intérieur au survol */
+    padding-right: 4.5rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 .showcase-row:hover::before { width: 100%; }
 .showcase-row:hover::after { opacity: 1; }
 
 .row-left { display: flex; flex-direction: column; gap: 1.2rem; flex: 1; }
+.row-right { max-width: 400px; text-align: left; display: flex; align-items: center; gap: 3.5rem; }
+
 .row-index { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--gold-raw); font-weight: 800; letter-spacing: 3px; }
 
 .showcase-row h2 { 
@@ -225,13 +234,12 @@ body {
     line-height: 1.05; 
     letter-spacing: -1px; 
     text-transform: uppercase; 
-    transform-origin: left center; /* Le zoom s'effectue vers la droite, sans dépasser sur le texte */
+    transform-origin: left center; 
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s; 
 }
 .showcase-row:hover h2 { color: var(--gold-bright); transform: scale(1.02); }
-.light-text { font-family: 'Cinzel', serif; font-weight: 400; color: var(--text-pure); text-transform: none; letter-spacing: 0px; }
-.row-right { max-width: 400px; text-align: left; display: flex; align-items: center; gap: 3.5rem; }
 
+.light-text { font-family: 'Cinzel', serif; font-weight: 400; color: var(--text-pure); text-transform: none; letter-spacing: 0px; }
 .project-brief { color: var(--text-dark); font-size: 1.05rem; line-height: 1.6; transition: color 0.3s; }
 .showcase-row:hover .project-brief { color: var(--text-pure); }
 
@@ -242,9 +250,26 @@ body {
    PAGES DE DÉTAILS ET CONTACT 
    ========================================================================== */
 
-.layout-minecraft, .layout-trading, .layout-killer, .layout-tva, .layout-boutique, .layout-fivem { max-width: 850px; margin: 0 auto; padding: 2rem 0 8rem 0; position: relative; z-index: 5; }
+.layout-minecraft, .layout-trading, .layout-killer, .layout-tva, .layout-boutique, .layout-fivem { 
+    width: 60vw; 
+    margin-left: calc(15vw + 3rem); 
+    padding: 2rem 0 8rem 0; 
+    position: relative; 
+    z-index: 5; 
+}
 
-.retour-minecraft, .retour-trading, .retour-killer, .retour-tva, .retour-boutique, .retour-fivem { display: inline-block; font-family: 'Cinzel', serif; color: var(--gold-raw); text-transform: uppercase; letter-spacing: 3px; font-size: 0.85rem; margin-bottom: 4rem; text-decoration: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.retour-minecraft, .retour-trading, .retour-killer, .retour-tva, .retour-boutique, .retour-fivem { 
+    display: inline-block; 
+    font-family: 'Cinzel', serif; 
+    color: var(--gold-raw); 
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    font-size: 0.85rem; 
+    margin-bottom: 4rem; 
+    margin-left: calc(15vw + 3rem); 
+    text-decoration: none; 
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+}
 .retour-minecraft:hover, .retour-trading:hover, .retour-killer:hover, .retour-tva:hover, .retour-boutique:hover, .retour-fivem:hover { color: var(--text-pure); transform: translateX(-5px); text-shadow: 0 0 15px var(--gold-raw); }
 
 .title-minecraft, .title-trading, .title-killer, .title-tva, .title-boutique, .title-fivem, .title-contact { font-family: 'Syne', sans-serif; font-size: 5rem; line-height: 0.9; text-transform: uppercase; margin-bottom: 3.5rem; letter-spacing: -2px; }
@@ -259,9 +284,16 @@ body {
 .link-killer, .link-fivem { display: inline-block; margin-top: 2rem; background: var(--gold-linear); color: var(--bg-pure); font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; text-decoration: none; letter-spacing: 2px; font-size: 1rem; padding: 1.2rem 2.5rem; border-radius: 2px; box-shadow: 0 5px 20px rgba(241, 196, 67, 0.2); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
 .link-killer:hover, .link-fivem:hover { color: var(--bg-pure); transform: translateY(-4px); box-shadow: 0 15px 30px rgba(138, 101, 8, 0.3); }
 
-.contact-section { display: flex; flex-direction: column; align-items: center; margin: 0 auto; }
+.contact-section { 
+    width: 70vw; 
+    margin-left: 15vw; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-bottom: 6rem;
+}
 .title-contact { text-align: center; }
-.contact-form { background: linear-gradient(135deg, var(--hover-bg) 0%, transparent 100%); border-top: 1px solid var(--fine-line); border-bottom: 1px solid var(--fine-line); padding: 5rem 3rem; display: flex; flex-direction: column; align-items: center; gap: 3.5rem; width: 70vw; margin: 0 auto; }
+.contact-form { background: linear-gradient(135deg, var(--hover-bg) 0%, transparent 100%); border-top: 1px solid var(--fine-line); border-bottom: 1px solid var(--fine-line); padding: 5rem 3rem; display: flex; flex-direction: column; align-items: center; gap: 3.5rem; width: 100%; }
 .form-group { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 1.2rem; }
 .form-group label { color: var(--gold-raw); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
 .form-group input, .form-group textarea { background: transparent; border: none; border-bottom: 1px solid var(--fine-line) !important; padding: 1.2rem 0; color: var(--text-pure); font-size: 1.25rem; transition: all 0.4s ease; width: 100%; max-width: 550px; text-align: center; resize: none; }
@@ -269,22 +301,34 @@ body {
 .btn-primary { border: 1px solid var(--gold-raw) !important; background: var(--gold-linear) !important; color: var(--bg-pure) !important; padding: 1.5rem 3.5rem !important; font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; box-shadow: 0 5px 20px rgba(241, 196, 67, 0.2); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); margin-top: 1.5rem; }
 .btn-primary:hover { background: var(--text-pure) !important; border-color: var(--text-pure) !important; color: var(--bg-pure) !important; transform: translateY(-4px); }
 
-.editorial-footer { padding: 0 4rem 4rem 4rem; position: relative; z-index: 5; }
+.editorial-footer { padding: 0 calc(15vw + 2rem) 4rem calc(15vw + 2rem); position: relative; z-index: 5; }
 .footer-line { width: 100%; height: 1px; background-color: var(--fine-line); margin-bottom: 2rem; }
 .footer-content { display: flex; justify-content: space-between; font-size: 0.75rem; letter-spacing: 3px; color: var(--gold-raw); font-weight: 600; }
 
+/* ==========================================================================
+   RESPONSIVE (TÉLÉPHONES ET TABLETTES)
+   ========================================================================== */
+
 @media (max-width: 1024px) {
-    .navbar { padding: 2rem 2rem; flex-direction: column; gap: 1.5rem; }
+    .line-left, .line-right { display: none; } 
+    .navbar { padding: 2rem 5vw; flex-direction: column; gap: 1.5rem; }
     .nav-links { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
     .theme-btn { margin-left: 0; }
-    .viewport-canvas { padding: 0 2rem; }
-    .hero-editorial { padding-left: 0; text-align: center; margin-bottom: 5rem; }
+    .hero-editorial { padding-left: 5vw; padding-right: 5vw; text-align: center; margin-bottom: 5rem; margin-top: 4rem;}
     .hero-editorial h1 { font-size: 4rem; }
-    .showcase-row { width: 90vw; flex-direction: column; align-items: flex-start; gap: 2rem; padding: 3.5rem 2rem; }
+    
+    .showcase-row { width: 90vw; margin-left: 5vw; flex-direction: column; align-items: flex-start; gap: 2rem; padding: 3.5rem 2rem; }
     .showcase-row:hover { padding-left: 2rem; padding-right: 2rem; }
     .row-right { max-width: 100%; gap: 2rem; justify-content: space-between; width: 100%; }
-    .contact-form { width: 90vw; padding: 4rem 1.5rem; }
+    
+    .contact-section { width: 90vw; margin-left: 5vw; }
+    .contact-form { padding: 4rem 1.5rem; }
+    
+    .layout-minecraft, .layout-trading, .layout-killer, .layout-tva, .layout-boutique, .layout-fivem { width: 90vw; margin-left: 5vw; }
+    .retour-minecraft, .retour-trading, .retour-killer, .retour-tva, .retour-boutique, .retour-fivem { margin-left: 5vw; }
+    
     .title-minecraft, .title-trading, .title-killer, .title-tva, .title-boutique, .title-fivem, .title-contact { font-size: 3rem; text-align: center; }
-    .editorial-footer { padding: 0 2rem 2rem 2rem; }
+    
+    .editorial-footer { padding: 0 5vw 2rem 5vw; }
     .footer-content { flex-direction: column; gap: 1rem; text-align: center; }
 }
