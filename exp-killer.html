@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THELWEN | ARCHIVE JEU DU KILLER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Syne:wght@700;800&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="ambient-laser"></div>
+    <div class="structural-grid-line line-left"></div>
+    <div class="structural-grid-line line-right"></div>
+
+    <header class="navbar">
+        <div class="logo">Thelwen</div>
+        <nav>
+            <a href="index.html" class="active"><span class="nav-num"></span> Projets</a>
+            <a href="contact.html"><span class="nav-num"></span> Contact</a>
+        </nav>
+    </header>
+
+    <main class="viewport-canvas">
+        <a href="index.html" class="retour-killer">← Retour à l'archive</a>
+        
+        <div class="layout-killer">
+            <h1 class="title-killer">APPLICATION WEB<br><span class="gold-text-killer">JEU DU KILLER</span></h1>
+            
+            <p class="paragraph-killer">Né de la volonté de digitaliser un jeu de société physique pour pallier l'éloignement géographique entre amis, ce projet est devenu un véritable laboratoire d'algorithmique et de théorie des jeux.</p>
+            
+            <p class="paragraph-killer">Le noyau de l'application repose sur un système de tirage à 5 dés, avec la contrainte de verrouiller au minimum une valeur par itération. La matrice de calcul récompense les extrêmes absolus : atteindre les valeurs les plus basses (5-10) ou les plus hautes (25-30) déclenche le statut de "Killer", tandis que les valeurs intermédiaires sont segmentées en paliers de dégâts ou de régénération de dés. L'architecture logique gère l'état de chaque joueur et le calcul des totaux en temps réel.</p>
+
+            <p class="paragraph-killer">Le véritable exploit technique de ce projet réside dans le développement de "Bots". J'ai conçu un algorithme d'intelligence artificielle basé sur des calculs de probabilités statistiques si optimisés qu'en affrontant deux bots simultanément, un joueur humain appliquant la stratégie mathématique absolue verra son taux de victoire plafonner à exactement 33%.</p>
+            
+            <a href="https://jeu-killer.onrender.com/" target="_blank" class="link-killer">LANCER L'APPLICATION ↗</a>
+
+            <div class="specs-block-killer">
+                <div class="specs-title-killer">Spécifications techniques</div>
+                <p class="specs-details-killer">Stack : Python // Algorithmique (Probabilités) // Cloud Hosting (Render) // Game Theory</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="editorial-footer">
+        <div class="footer-line"></div>
+        <div class="footer-content">
+            <span>THELWEN 2026</span>
+            <span>TOUT DROIT RÉSERVÉ ©</span>
+        </div>
+    </footer>
+</body>
+</html>

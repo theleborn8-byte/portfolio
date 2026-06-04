@@ -3,48 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Contact</title>
+    <title>THELWEN | CONTACT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Syne:wght@700;800&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <div class="ambient-laser"></div>
+    <div class="structural-grid-line line-left"></div>
+    <div class="structural-grid-line line-right"></div>
+
     <header class="navbar">
-        <div class="logo">Mon Portfolio</div>
+        <div class="logo">Thelwen</div>
         <nav>
-            <a href="index.html">Mes Projets</a>
-            <a href="contact.html" class="active">Contact</a>
+            <a href="index.html"><span class="nav-num"></span> Projets</a>
+            <a href="contact.html" class="active"><span class="nav-num"></span> Contact</a>
         </nav>
     </header>
 
-    <main class="container">
-        <section class="contact-section">
-            <div style="text-align: center;">
-                <h1>Me Contacter</h1>
-                <p>Envoyez-moi un message directement via ce formulaire.</p>
-            </div>
+    <main class="viewport-canvas">
+        <div class="contact-section">
+            <h1 class="title-contact">ME <span class="gold-gradient-text">CONTACTER</span></h1>
             
-            <!-- Remplace l'URL de l'action par celle fournie par Formspree -->
-            <form action="https://formspree.io/f/TON_CODE_FORMSPREE" method="POST" class="contact-form">
+            <form action="https://formspree.io/f/mqeokdyr" method="POST" class="contact-form">
                 
                 <div class="form-group">
-                    <label for="name">Votre Nom</label>
-                    <input type="text" id="name" name="name" required placeholder="Jean Dupont">
+                    <label for="name">Nom / Entreprise</label>
+                    <input type="text" id="name" name="name" required placeholder="Ex: Jean Dupont">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Votre Email</label>
-                    <input type="email" id="email" name="email" required placeholder="jean@email.com">
+                    <label for="email">Adresse E-mail</label>
+                    <input type="email" id="email" name="_replyto" required placeholder="Ex: jean.dupont@email.com">
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Votre Message</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Bonjour, je vous contacte pour..."></textarea>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required placeholder="Votre message..."></textarea>
                 </div>
 
-                <button type="submit" class="btn-primary">Envoyer le message</button>
+                <input type="text" name="_gotcha" style="display:none">
+
+                <button type="submit" class="btn-primary">Envoyer la spécification</button>
             </form>
-        </section>
+        </div>
     </main>
 
-    <footer><p>&copy; 2026 - Portfolio codé à la main</p></footer>
+    <footer class="editorial-footer">
+        <div class="footer-line"></div>
+        <div class="footer-content">
+            <span>THELWEN 2026</span>
+            <span>TOUT DROIT RÉSERVÉ ©</span>
+        </div>
+    </footer>
 </body>
 </html>
