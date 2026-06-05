@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,23 +17,26 @@
 </head>
 <body>
 
-    <div class="ambient-laser"></div>
-    <div class="structural-grid-line line-left"></div>
-    <div class="structural-grid-line line-right"></div>
+    <div class="luxury-art-bg">
+        <svg id="art-canvas" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"></svg>
+    </div>
 
     <header class="navbar">
         <div class="logo">Thelwen</div>
         <div class="nav-links">
-            <a href="index.html" class="active"><span class="nav-num"></span> Projets</a>
-            <a href="contact.html"><span class="nav-num"></span> Contact</a>
+            <a href="index.html#accueil">Accueil</a>
+            <a href="index.html#apropos">À propos</a>
+            <a href="index.html#projets" class="active">Projets</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#contact">Contact</a>
             <button id="theme-toggle" class="theme-btn">MODE: <span id="theme-label">DARK</span></button>
         </div>
     </header>
 
     <main class="viewport-canvas">
-        <a href="index.html" class="retour-tva">← Retour à l'archive</a>
+        <a href="index.html#projets" class="retour-tva reveal">← Retour à l'archive</a>
         
-        <div class="layout-tva">
+        <div class="layout-tva reveal">
             <h1 class="title-tva">AUTOMATISATION FISCALE<br><span class="gold-text-tva">DÉCLARATION TVA</span></h1>
             
             <p class="paragraph-tva">En 2024, j'ai identifié un goulot d'étranglement administratif majeur : le traitement des réglementations fiscales transfrontalières. J'ai donc pris l'initiative de développer une application utilitaire dédiée à la gestion et à l'automatisation des déclarations de TVA étrangère pour le territoire belge.</p>
@@ -49,7 +52,7 @@
         </div>
     </main>
 
-    <footer class="editorial-footer">
+    <footer class="editorial-footer reveal">
         <div class="footer-line"></div>
         <div class="footer-content">
             <span>THELWEN 2026</span>
@@ -58,6 +61,58 @@
     </footer>
 
     <script>
+        function createProceduralArt() {
+            const svg = document.getElementById('art-canvas');
+            const defs = `
+                <defs>
+                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FFDF00" />
+                        <stop offset="25%" stop-color="#FFF8DC" />
+                        <stop offset="50%" stop-color="#D4AF37" />
+                        <stop offset="75%" stop-color="#FFFACD" />
+                        <stop offset="100%" stop-color="#996515" />
+                    </linearGradient>
+                    <filter id="goldGlow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="2" result="blur1" />
+                        <feGaussianBlur stdDeviation="8" result="blur2" />
+                        <feMerge>
+                            <feMergeNode in="blur2" />
+                            <feMergeNode in="blur1" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                </defs>`;
+                
+            const width = window.innerWidth;
+            const height = 2000; 
+            
+            let pathsHtml = '';
+            const numLines = 4;
+            
+            for (let i = 0; i < numLines; i++) {
+                const startX = (width / numLines) * i + (Math.random() * (width / numLines));
+                const midX = Math.random() * width;
+                const sweep = width * 1.2; 
+                const cpX = midX + (Math.random() * sweep - sweep / 2);
+                const strokeWidth = 0.5 + Math.random() * 1.5; 
+                const opacity = 0.5 + Math.random() * 0.4; 
+                
+                const pathD = `M ${startX},0 
+                               C ${startX},${height * 0.2} ${cpX},${height * 0.35} ${midX},${height * 0.5} 
+                               S ${startX},${height * 0.8} ${startX},${height}`;
+                
+                pathsHtml += `<path d="${pathD}" fill="none" stroke="url(#goldGradient)" stroke-width="${strokeWidth}" filter="url(#goldGlow)" opacity="${opacity}"/>`;
+            }
+            
+            svg.innerHTML = defs + `<g>${pathsHtml}</g>` + `<g transform="translate(0, ${height})">${pathsHtml}</g>`;
+            svg.setAttribute('viewBox', `0 0 ${width} ${height * 2}`);
+            svg.style.width = width + 'px';
+            svg.style.height = (height * 2) + 'px';
+        }
+
+        window.addEventListener('DOMContentLoaded', createProceduralArt);
+        window.addEventListener('resize', createProceduralArt);
+
         const toggleBtn = document.getElementById('theme-toggle');
         const themeLabel = document.getElementById('theme-label');
         const html = document.documentElement;
@@ -76,6 +131,27 @@
                 themeLabel.textContent = 'DARK';
             }
         });
+
+        const artBg = document.getElementById('art-canvas');
+        window.addEventListener("scroll", () => {
+            let scrollY = window.pageYOffset;
+            if (artBg) {
+                let y = (scrollY * 0.45) % 2000;
+                artBg.style.transform = `translateY(${-y}px)`;
+            }
+        });
+
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        revealElements.forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>
