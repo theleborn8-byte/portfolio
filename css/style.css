@@ -57,24 +57,24 @@ body {
    ========================================================================== */
 
 .luxury-art-bg {
-    position: fixed; /* L'arrière-plan ne scrolle pas nativement avec la page */
+    position: fixed;
     top: 0; 
     left: 0;
     width: 100vw; 
-    height: 100vh; /* Verrouillé à la taille de l'écran de l'utilisateur */
+    height: 100vh;
     z-index: 0;
-    pointer-events: none; /* Empêche les bugs de clics sur les courbes */
+    pointer-events: none;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    overflow: hidden; /* Empêche l'art de dépasser de l'écran fixe */
+    overflow: hidden; 
 }
 
 .luxury-art-bg svg {
     position: absolute;
     top: 0;
     left: 0;
-    will-change: transform; /* Optimisation pour la carte graphique */
+    will-change: transform; 
 }
 
 /* ==========================================================================
@@ -99,7 +99,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 20vw; /* Aligné sur la grille des 60% (20% gauche / 20% droite) */
+    padding: 1.5rem 20vw; 
     position: sticky;
     top: 0;
     background-color: rgba(5, 5, 7, 0.85); 
@@ -111,7 +111,7 @@ html.light-mode .navbar { background-color: rgba(252, 251, 249, 0.85); }
 
 .navbar .logo {
     font-family: 'Syne', sans-serif;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1.5rem;
     letter-spacing: 4px;
     background: var(--gold-linear);
@@ -140,7 +140,7 @@ html.light-mode .navbar { background-color: rgba(252, 251, 249, 0.85); }
     color: var(--gold-raw);
     font-family: 'Syne', sans-serif;
     font-size: 0.7rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 2px;
     padding: 0.5rem 1rem;
     margin-left: 1rem;
@@ -151,7 +151,7 @@ html.light-mode .navbar { background-color: rgba(252, 251, 249, 0.85); }
 .theme-btn:hover { background: var(--gold-linear); color: #000; border-color: transparent; }
 
 /* ==========================================================================
-   STRUCTURE GÉNÉRALE DES SECTIONS (ARCHITECTURE 60% CENTRÉE)
+   STRUCTURE GÉNÉRALE DES SECTIONS
    ========================================================================== */
 
 .viewport-canvas { position: relative; z-index: 2; padding: 0; }
@@ -165,12 +165,13 @@ section {
 .section-title {
     font-family: 'Syne', sans-serif;
     font-size: 3.5rem;
+    font-weight: 700;
     line-height: 1.1;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
     text-align: center;
     margin-bottom: 5rem;
-    width: 60vw; /* Verrouillé à 60% */
-    margin-left: 20vw; /* 20% de marge gauche pour un centrage parfait */
+    width: 60vw; 
+    margin-left: 20vw; 
     text-transform: uppercase;
 }
 
@@ -204,21 +205,30 @@ section {
 }
 
 /* ==========================================================================
-   1. HERO (ACCUEIL)
+   1. HERO (ACCUEIL) - CORRECTION DE LA LARGEUR
    ========================================================================== */
 
 .hero-editorial { 
     margin-top: 6rem; 
-    padding-left: 20vw; /* Calé sur le repère des 60% */
+    padding-left: 20vw; 
     padding-right: 20vw; 
     padding-top: 2rem; 
 }
 .hero-meta { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold-raw); letter-spacing: 6px; margin-bottom: 1.5rem; font-weight: 800; }
-.hero-editorial h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 6.5rem; line-height: 0.9; letter-spacing: -2px; margin-bottom: 1.5rem; }
+
+.hero-editorial h1 { 
+    font-family: 'Syne', sans-serif; 
+    font-weight: 700; /* Poids réduit pour éviter l'étirement excessif de la police Syne */
+    font-size: 5.5rem; /* Taille ajustée pour un meilleur équilibre */
+    line-height: 1.05; 
+    letter-spacing: -1px; 
+    margin-bottom: 1.5rem; 
+}
+
 .hero-sub { font-size: 1.1rem; color: var(--text-dark); letter-spacing: 2px; font-weight: 400; text-transform: uppercase; }
 
 /* ==========================================================================
-   2. À PROPOS (60% AREA)
+   2. À PROPOS 
    ========================================================================== */
 
 .about-section { width: 100%; }
@@ -244,11 +254,11 @@ section {
 
 .stats-row { display: flex; justify-content: space-around; border-top: 1px solid var(--fine-line); padding-top: 2.5rem; }
 .stat-item { text-align: center; }
-.stat-num { display: block; font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; background: var(--gold-linear); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.stat-num { display: block; font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 700; background: var(--gold-linear); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .stat-label { font-size: 0.8rem; color: var(--text-dark); text-transform: uppercase; letter-spacing: 2px; margin-top: 0.5rem; display: block; }
 
 /* ==========================================================================
-   3. PROJETS (60% AREA)
+   3. PROJETS
    ========================================================================== */
 
 .projects-grid { width: 60vw; margin-left: 20vw; display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
@@ -267,13 +277,13 @@ section {
 .project-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: opacity 0.5s ease, transform 0.5s ease; filter: grayscale(50%); }
 .project-card:hover .project-image img { transform: scale(1.05); opacity: 1; filter: grayscale(0%); }
 
-.project-placeholder { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; color: var(--gold-raw); opacity: 0.2; transition: opacity 0.4s ease; }
+.project-placeholder { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 700; color: var(--gold-raw); opacity: 0.2; transition: opacity 0.4s ease; }
 .project-card:hover .project-placeholder { opacity: 1; text-shadow: 0 0 20px var(--gold-raw); }
 
 .project-badge { position: absolute; top: 1.5rem; left: 1.5rem; background: var(--gold-linear); color: #000; font-weight: 800; font-size: 0.75rem; padding: 0.4rem 1rem; border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; z-index: 2; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
 
 .project-content { padding: 2.5rem; display: flex; flex-direction: column; flex-grow: 1; }
-.project-title { font-family: 'Syne', sans-serif; font-size: 1.6rem; color: var(--text-pure); margin-bottom: 1rem; font-weight: 800; }
+.project-title { font-family: 'Syne', sans-serif; font-size: 1.6rem; color: var(--text-pure); margin-bottom: 1rem; font-weight: 700; }
 .project-desc { color: var(--text-dark); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem; flex-grow: 1; }
 
 .project-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
@@ -281,7 +291,7 @@ section {
 
 .project-actions { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--fine-line); padding-top: 1.5rem; }
 
-.btn-project { background: var(--gold-linear); color: #000; padding: 0.8rem 1.5rem; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; text-decoration: none; transition: all 0.3s ease; }
+.btn-project { background: var(--gold-linear); color: #000; padding: 0.8rem 1.5rem; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; text-decoration: none; transition: all 0.3s ease; }
 .btn-project:hover { box-shadow: 0 0 20px var(--gold-raw); transform: translateY(-2px); }
 
 .project-icons { display: flex; gap: 1rem; }
@@ -289,7 +299,7 @@ section {
 .project-icons a:hover svg { fill: var(--gold-bright); transform: scale(1.1); filter: drop-shadow(0 0 5px var(--gold-raw)); }
 
 /* ==========================================================================
-   4. SERVICES & FORFAITS (60% AREA)
+   4. SERVICES & FORFAITS
    ========================================================================== */
 
 .pricing-grid { width: 60vw; margin-left: 20vw; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: center; }
@@ -300,21 +310,21 @@ section {
 .pricing-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold-linear); color: #000; padding: 0.4rem 1.5rem; border-radius: 2px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
 
 .pricing-icon { font-size: 2.5rem; margin-bottom: 1.5rem; text-shadow: 0 0 20px var(--gold-raw); }
-.pricing-card h3 { font-family: 'Syne', sans-serif; font-size: 1.6rem; margin-bottom: 1rem; color: var(--text-pure); font-weight: 800; }
+.pricing-card h3 { font-family: 'Syne', sans-serif; font-size: 1.6rem; margin-bottom: 1rem; color: var(--text-pure); font-weight: 700; }
 .pricing-desc { color: var(--text-dark); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; height: 3.5rem; }
-.pricing-price { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; background: var(--gold-linear); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--fine-line); }
+.pricing-price { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 700; background: var(--gold-linear); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--fine-line); }
 .pricing-features { list-style: none; text-align: left; }
 .pricing-features li { color: var(--text-pure); font-size: 0.95rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 12px; }
 .pricing-features li::before { content: '✓'; color: var(--gold-raw); font-weight: bold; font-size: 1.2rem; }
 
 /* ==========================================================================
-   5. CONTACT (60% AREA)
+   5. CONTACT 
    ========================================================================== */
 
 .contact-layout { width: 60vw; margin-left: 20vw; display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; }
 
 .contact-info { padding: 3rem; }
-.contact-info h3 { font-family: 'Syne', sans-serif; font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--gold-bright); font-weight: 800; }
+.contact-info h3 { font-family: 'Syne', sans-serif; font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--gold-bright); font-weight: 700; }
 .contact-info p { color: var(--text-dark); line-height: 1.7; margin-bottom: 2.5rem; font-size: 1rem;}
 
 .info-item { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem; color: var(--text-pure); font-size: 1rem; }
@@ -327,11 +337,11 @@ section {
 .form-group input, .form-group textarea { background: rgba(0,0,0,0.3); border: 1px solid var(--fine-line); border-radius: 4px; padding: 1.2rem; color: var(--text-pure); font-size: 1rem; transition: all 0.3s ease; resize: none; font-family: inherit; }
 .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--gold-raw); box-shadow: 0 0 15px var(--hover-bg); }
 
-.btn-primary { background: var(--gold-linear); color: #000; padding: 1.2rem 3rem; font-family: 'Syne', sans-serif; font-weight: 800; border: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; border-radius: 2px; cursor: pointer; transition: all 0.3s ease; align-self: flex-start; }
+.btn-primary { background: var(--gold-linear); color: #000; padding: 1.2rem 3rem; font-family: 'Syne', sans-serif; font-weight: 700; border: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; border-radius: 2px; cursor: pointer; transition: all 0.3s ease; align-self: flex-start; }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px var(--gold-glow); }
 
 /* ==========================================================================
-   FOOTER (ALIGNEMENT 60%)
+   FOOTER
    ========================================================================== */
 
 .editorial-footer { padding: 3rem 20vw 4rem 20vw; border-top: 1px solid var(--fine-line); margin-top: 5rem; }
@@ -349,7 +359,7 @@ section {
 [class^="specs-block-"] { border-top: 1px solid var(--fine-line); margin-top: 4rem; padding-top: 2rem; }
 [class^="specs-title-"] { font-family: 'Cinzel', serif; color: var(--gold-raw); font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; margin-bottom: 1rem; }
 [class^="specs-details-"] { font-size: 1rem; color: var(--text-pure); }
-.link-killer, .link-fivem { display: inline-block; margin-top: 2.5rem; background: var(--gold-linear); color: #000; padding: 1rem 2rem; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; text-decoration: none; transition: all 0.3s ease; }
+.link-killer, .link-fivem { display: inline-block; margin-top: 2.5rem; background: var(--gold-linear); color: #000; padding: 1rem 2rem; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; text-decoration: none; transition: all 0.3s ease; }
 .link-killer:hover, .link-fivem:hover { transform: translateY(-3px); box-shadow: 0 10px 20px var(--gold-glow); }
 
 /* ==========================================================================
