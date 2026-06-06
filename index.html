@@ -148,7 +148,7 @@
                             <a href="exp-minecraft.html" class="btn-project">Voir les détails</a>
                             <div class="project-icons">
                                 <a href="#" aria-label="Lien"><svg viewBox="0 0 24 24"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/></svg></a>
-                                <a href="#" aria-label="Github"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67(10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.96 11.15,6.86 12,6.86C12.85,6.86 13.71,6.96 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/></svg></a>
+                                <a href="#" aria-label="Github"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.96 11.15,6.86 12,6.86C12.85,6.86 13.71,6.96 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/></svg></a>
                             </div>
                         </div>
                     </div>
@@ -371,6 +371,13 @@
     </footer>
 
     <script>
+        let linesData = [];
+        const height = 2000;
+        let lastTime = 0;
+
+        // BRIDAGE PHYSIQUE STRICT : 1 cm toutes les 5 secondes (environ 0.008px par milliseconde)
+        const MAX_SPEED = 0.008; 
+
         function createProceduralArt() {
             const svg = document.getElementById('art-canvas');
             const defs = `
@@ -394,39 +401,111 @@
                 </defs>`;
                 
             const width = window.innerWidth;
-            const height = 2000; 
+            linesData = [];
+            const numLines = 3.1;
             
-            let pathsHtml = '';
-            const numLines = 4;
+            let group1Content = '';
+            let group2Content = '';
             
             for (let i = 0; i < numLines; i++) {
-                const startX = (width / numLines) * i + (Math.random() * (width / numLines));
-                const midX = Math.random() * width;
+                const sX = (width / numLines) * i + (Math.random() * (width / numLines));
+                const mX = Math.random() * width;
+                const sweep = width * 1.8; 
+                const cX = mX + (Math.random() * sweep - sweep / 2);
                 
-                const sweep = width * 1.2; 
-                const cpX = midX + (Math.random() * sweep - sweep / 2);
+                // Épaisseur de prestige ajustée (1.2px à 3px maximum) pour un rendu haut de gamme net
+                const strokeWidth = 1.2 + Math.random() * 1.8; 
+                const opacity = 0.8 + Math.random() * 2.3; 
                 
-                const strokeWidth = 0.5 + Math.random() * 1.5; 
-                const opacity = 0.5 + Math.random() * 0.4; 
+                linesData.push({
+                    baseStartX: sX, baseMidX: mX, baseCpX: cX,
+                    tgtStartX: sX, tgtMidX: mX, tgtCpX: cX,
+                    strokeWidth: strokeWidth,
+                    opacity: opacity,
+                    waveSpeedX: 0.6 + Math.random() * 0.6,
+                    waveSpeedCp: 0.4 + Math.random() * 0.6,
+                    phase: Math.random() * Math.PI * 2
+                });
                 
-                const pathD = `M ${startX},0 
-                               C ${startX},${height * 0.2} ${cpX},${height * 0.35} ${midX},${height * 0.5} 
-                               S ${startX},${height * 0.8} ${startX},${height}`;
-                
-                pathsHtml += `<path d="${pathD}" fill="none" stroke="url(#goldGradient)" stroke-width="${strokeWidth}" filter="url(#goldGlow)" opacity="${opacity}"/>`;
+                // Correction critique : réinjection des IDs indispensables pour la liaison du script d'animation
+                group1Content += `<path id="g1-path-${i}" fill="none" stroke="url(#goldGradient)" stroke-width="${strokeWidth}" filter="url(#goldGlow)" opacity="${opacity}"/>`;
+                group2Content += `<path id="g2-path-${i}" fill="none" stroke="url(#goldGradient)" stroke-width="${strokeWidth}" filter="url(#goldGlow)" opacity="${opacity}"/>`;
             }
             
-            const group1 = `<g>${pathsHtml}</g>`;
-            const group2 = `<g transform="translate(0, ${height})">${pathsHtml}</g>`;
-            
-            svg.innerHTML = defs + group1 + group2;
+            svg.innerHTML = defs + `<g>${group1Content}</g>` + `<g transform="translate(0, ${height})">${group2Content}</g>`;
             
             svg.setAttribute('viewBox', `0 0 ${width} ${height * 2}`);
             svg.style.width = width + 'px';
             svg.style.height = (height * 2) + 'px';
         }
 
-        window.addEventListener('DOMContentLoaded', createProceduralArt);
+        function animateSpeedClampedCaterpillar(timestamp) {
+            if (!lastTime) lastTime = timestamp;
+            let delta = timestamp - lastTime;
+            lastTime = timestamp;
+            
+            if (delta > 100) delta = 16; 
+
+            const width = window.innerWidth;
+            const sweep = width * 1.2;
+            const maxMove = MAX_SPEED * delta; 
+
+            linesData.forEach((line, i) => {
+                const p1 = document.getElementById(`g1-path-${i}`);
+                const p2 = document.getElementById(`g2-path-${i}`);
+
+                let deltaX_start = line.tgtStartX - line.baseStartX;
+                let deltaX_mid = line.tgtMidX - line.baseMidX;
+                let deltaX_cp = line.tgtCpX - line.baseCpX;
+
+                let stepStart = deltaX_start * 0.0006 * delta;
+                let stepMid = deltaX_mid * 0.0006 * delta;
+                let stepCp = deltaX_cp * 0.0006 * delta;
+
+                // Application du bridage strict vectoriel (1cm/5s maximum)
+                stepStart = Math.sign(stepStart) * Math.min(Math.abs(stepStart), maxMove);
+                stepMid = Math.sign(stepMid) * Math.min(Math.abs(stepMid), maxMove);
+                stepCp = Math.sign(stepCp) * Math.min(Math.abs(stepCp), maxMove);
+
+                line.baseStartX += stepStart;
+                line.baseMidX += stepMid;
+                line.baseCpX += stepCp;
+
+                // Sélection d'une nouvelle posture cible dès que la précédente est validée
+                if (Math.abs(deltaX_start) < 6 && Math.abs(deltaX_mid) < 6 && Math.abs(deltaX_cp) < 6) {
+                    line.tgtStartX = (width / 4) * i + (Math.random() * (width / 4));
+                    line.tgtMidX = Math.random() * width;
+                    line.tgtCpX = line.tgtMidX + (Math.random() * sweep - sweep / 2);
+                }
+
+                // Micro-ondulation organique fluide constante (effet chenille)
+                const wobbleMid = Math.sin(timestamp * 0.0008 + line.phase) * 35;
+                const wobbleCp = Math.cos(timestamp * 0.0006 + line.phase) * 50;
+
+                let renderStartX = line.baseStartX;
+                let renderMidX = line.baseMidX + wobbleMid;
+                let renderCpX = line.baseCpX + wobbleCp;
+
+                const pathD = `M ${renderStartX},0 \n C ${renderStartX},${height * 0.2} ${renderCpX},${height * 0.35} ${renderMidX},${height * 0.5} \n S ${renderStartX},${height * 0.8} ${renderStartX},${height}`;
+                
+                if (p1) p1.setAttribute('d', pathD);
+                if (p2) p2.setAttribute('d', pathD);
+            });
+            
+            const artBg = document.getElementById('art-canvas');
+            let scrollY = window.pageYOffset;
+            if (artBg) {
+                let y = (scrollY * 0.9) % 2000;
+                artBg.style.transform = `translateY(${-y}px)`;
+            }
+
+            requestAnimationFrame(animateSpeedClampedCaterpillar);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            createProceduralArt();
+            requestAnimationFrame(animateSpeedClampedCaterpillar);
+        });
         window.addEventListener('resize', createProceduralArt);
 
         const toggleBtn = document.getElementById('theme-toggle');
@@ -450,16 +529,9 @@
 
         const sections = document.querySelectorAll("section");
         const navLinks = document.querySelectorAll(".nav-links a");
-        const artBg = document.getElementById('art-canvas');
 
         window.addEventListener("scroll", () => {
             let scrollY = window.pageYOffset;
-            
-            if (artBg) {
-                let y = (scrollY * 0.45) % 2000;
-                artBg.style.transform = `translateY(${-y}px)`;
-            }
-
             let current = "";
             sections.forEach((section) => {
                 const sectionTop = section.offsetTop;
@@ -484,10 +556,7 @@
                     observer.unobserve(entry.target); 
                 }
             });
-        }, {
-            threshold: 0.1, 
-            rootMargin: "0px 0px -50px 0px"
-        });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
         revealElements.forEach(el => revealObserver.observe(el));
     </script>
